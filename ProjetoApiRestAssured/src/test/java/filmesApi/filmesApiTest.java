@@ -2,6 +2,7 @@ package filmesApi;
 
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import maps.loginMap;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import utils.BaseUtils;
@@ -18,7 +19,9 @@ public class filmesApiTest {
     public static void validarLoginMap(){
         BaseUtils.setBaseURI("http://localhost:8080/");
 
-        Response response = BaseUtils.post(map, ContentType.JSON, "auth");
+        loginMap.initLogin();
+
+        Response response = BaseUtils.post(loginMap.getLogin(), ContentType.JSON, "auth");
     }
 
     @Test
